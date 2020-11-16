@@ -1,0 +1,74 @@
+﻿@model AppStore.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Подробная карточка товара и ответственного сотрудника</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("На главную", "Index")
+</p>
