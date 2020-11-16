@@ -19,6 +19,42 @@ namespace AppStore.Controllers
             return View(products.ToList());
         }
 
+        public ActionResult FirstProduct()
+        {
+            var firstProduct = db.Products.FirstOrDefault();
+
+            return View(firstProduct);
+        }
+
+        public ActionResult PageView(int page = 1)
+        {
+            var products = db.Products.Include(p => p.Employee).ToList();
+            int pageSize = 5;
+            IEnumerable<Product> productsOnPage = products.Skip((page - 1) * pageSize).Take(pageSize);
+            var pagingModel = new PagingModel { PageNumber = page, PageSize = pageSize, TotalProducts = products.Count };
+            var viewProducts = new ViewProducts { Products = productsOnPage, PagingModel = pagingModel };
+
+            return View(viewProducts);
+        }
+
+        public ActionResult FilterView(int? employeeId)
+        {
+            var products = db.Products.Include(p => p.Employee);
+            if (employeeId != null && employeeId != 0)
+            {
+                products = products.Where(e => e.EmployeeId == employeeId);
+            }
+            var employees = db.Employees.ToList();
+            employees.Insert(0, new Employee { Surname = "Все сотрудники", Id = 0 });
+            ProductFilterList productFilterList = new ProductFilterList
+            {
+                Products = products.ToList(),
+                Employees = new SelectList(employees, "Id", "Surname")
+            };
+
+            return View(productFilterList);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -33,6 +69,7 @@ namespace AppStore.Controllers
         {
             db.Products.Add(product);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -48,6 +85,7 @@ namespace AppStore.Controllers
             {
                  SelectList employees = new SelectList(db.Employees, "Id", "Surname", product.EmployeeId);
                  ViewBag.Employees = employees;
+
                 return View(product);
             }
 
@@ -59,6 +97,7 @@ namespace AppStore.Controllers
         {
             db.Entry(product).State = EntityState.Modified;
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -74,6 +113,7 @@ namespace AppStore.Controllers
             {
                 Employee employee = db.Employees.Find(product.EmployeeId);
                 ViewBag.Employee = employee;
+
                 return View(product);
             }
 

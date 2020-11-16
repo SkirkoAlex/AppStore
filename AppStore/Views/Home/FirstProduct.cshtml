@@ -1,0 +1,39 @@
+﻿@model AppStore.Models.Product
+
+@{
+    ViewBag.Title = "FirstProduct";
+}
+<h2>Первый товар в списке</h2>
+<table class="table">
+    <tr>
+        <th>
+            Название товара
+        </th>
+        <th>
+            Категория
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Описание
+        </th>
+        <th></th>
+    </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Description)
+            </td>
+        </tr>
+</table>
+

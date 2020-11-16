@@ -3,11 +3,24 @@
 @{
     ViewBag.Title = "Index";
 }
+    <p>
+        @Html.ActionLink("Контроллер ProductsController", "Index", "Products")
+    </p>
 
 <h2>Список товаров с указанием сотрудника, ответственного за выдачу товара</h2>
 
 <p>
-    @Html.ActionLink("Добавить новый товар", "Create")
+    @Html.ActionLink("Добавить новый товар", "Create") 
+</p>
+
+<p>
+    @Html.ActionLink("Пагинация", "PageView")
+</p>
+<p>
+    @Html.ActionLink("Фильтрация", "FilterView")
+</p>
+<p>
+    @Html.ActionLink("Получить первый товар в списке", "FirstProduct")
 </p>
 <table class="table">
     <tr>

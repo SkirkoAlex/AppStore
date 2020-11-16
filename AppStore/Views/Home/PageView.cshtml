@@ -1,0 +1,53 @@
+﻿@model AppStore.Models.ViewProducts
+@using AppStore.Helpers
+@{
+    ViewBag.Title = "PageView";
+}
+
+    <table class="table">
+        <tr>
+            <th>Товар</th>
+            <th>Категория</th>
+            <th>Цена</th>
+            <th>Описание</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Phone)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("О товаре", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+        </table>
+    <br />
+    <div class="btn-group">
+        @Html.PageLinks(Model.PagingModel, p=> Url.Action("PageView", new { page = p}))
+    </div>

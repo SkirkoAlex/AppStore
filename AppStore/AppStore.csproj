@@ -128,12 +128,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagHelper.cs" />
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductFilterList.cs" />
+    <Compile Include="Models\ViewProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +184,14 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\PageView.cshtml" />
+    <Content Include="Views\Home\FilterView.cshtml" />
+    <Content Include="Views\Home\FirstProduct.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
